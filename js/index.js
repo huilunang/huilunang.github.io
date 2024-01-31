@@ -22,8 +22,10 @@ openMenu.onclick = function () {
 // Typed JS
 const typeTextSpan = document.querySelector(".typed-text");
 const cursorSpan = document.querySelector(".moving-cursor");
+const article = document.querySelector(".article");
 
 const textArr = ["aspiring techie.", "software developer."];
+const vowels = ["a", "e", "i", "o", "u"];
 const typeDelayed = 140; // ms, delay before typing the next char
 const erasingDealyed = 60; //ms, erasing will be faster
 const nextTextDelayed = 2000; //ms, delay between current and next string
@@ -33,8 +35,13 @@ let charIdx = 0;
 
 function type() {
   if (charIdx < textArr[textArrIdx].length) {
-    if (!cursorSpan.classList.contains("typing"))
+    if (!cursorSpan.classList.contains("typing")) {
       cursorSpan.classList.add("typing");
+
+      if (vowels.includes(textArr[textArrIdx].charAt(0).toLowerCase()))
+        article.textContent = "An";
+      else article.textContent = "A";
+    }
     typeTextSpan.textContent += textArr[textArrIdx].charAt(charIdx);
     charIdx++;
     setTimeout(type, typeDelayed);
@@ -90,7 +97,7 @@ owl.owlCarousel({
 // ** Event Listeners ** //
 window.addEventListener("scroll", function () {
   // Menu
-  var scrolled = window.pageYOffset || document.documentElement.scrollTop;
+  var scrolled = window.scrollY || document.documentElement.scrollTop;
 
   if (scrolled > curScroll) {
     navBlock.style.top = "-82px";
