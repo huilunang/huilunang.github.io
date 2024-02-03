@@ -418,10 +418,6 @@ div.container {
   font-size: 1.6rem;
 }
 
-.link-item-proj {
-  margin-top: 1px;
-}
-
 .body-proj {
   margin: 20px;
 }
@@ -504,7 +500,8 @@ div.container {
   margin: 1rem 0;
 }
 
-.modal-body p {
+.modal-body > p,
+.modal-body > ul {
   margin-bottom: 1rem;
 }
 
